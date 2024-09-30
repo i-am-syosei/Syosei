@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Δ8丁目-Ver0.1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- スタイルシートのリンク -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- フォントとアイコンのリンク -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- ナビゲーション -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">Δ8丁目</div>
+      <ul class="nav-links">
+        <li><a href="#home">ホーム</a></li>
+        <li><a href="#about">自己紹介</a></li>
+        <li><a href="#game">シューティングゲーム</a></li> <!-- ゲームセクションへのリンク -->
+        <li><a href="#chatbot">チャットボット</a></li>
+        <li><a href="#ai">AIデモ</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- アシストボタン -->
+  <div id="assist-btn" class="assist-btn">
+    <i class="fas fa-tools"></i>
+  </div>
+
+  <!-- アシストメニュー -->
+  <div id="assist-menu" class="assist-menu">
+    <h3>アシストメニュー</h3>
+    <ul>
+      <li><button id="play-audio-btn" class="menu-btn"><i class="fas fa-music"></i> 音声再生/停止</button></li>
+      <li>
+        <label for="volume-control"><i class="fas fa-volume-up"></i> 音量調節:</label>
+        <input type="range" id="volume-control" min="0" max="1" step="0.01" value="0.5">
+      </li>
+      <li>
+        <label for="color-select"><i class="fas fa-paint-brush"></i> テーマカラー:</label>
+        <select id="color-select">
+          <option value="default">デフォルト</option>
+          <option value="dark">ダーク</option>
+          <option value="blue">ブルー</option>
+          <option value="green">グリーン</option>
+        </select>
+      </li>
+      <li><button id="back-to-top-btn" class="menu-btn"><i class="fas fa-arrow-up"></i> TOPに戻る</button></li>
+    </ul>
+  </div>
+
+  <!-- ヒーローセクション -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>Δ8丁目のホームページへようこそ</h1>
+      <p>3時間ぐらいで作成したホームページなのでVer0.1にしておきます。</p>
+      <!-- <a href="#about" class="btn">詳しく見る</a> -->
+    </div>
+  </section>
+
+  <!-- 自己紹介 -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>自己紹介</h2>
+      <p>どこかで人工知能に関する勉強をしている院生です。</p>
+    </div>
+  </section>
+
+  <!-- シューティングゲームセクション -->
+  <section id="game" class="game-section">
+    <div class="container">
+      <h2>シューティングゲーム</h2>
+      <p>難易度を選んでゲームを開始してください。</p>
+
+      <!-- 弾幕の説明 -->
+      <p>弾幕の種類:</p>
+      <ul>
+        <li><span style="color: red;">赤い敵</span>: 通常の敵で、弾で破壊できます。</li>
+        <li><span style="color: purple;">紫の弾</span>: 壊せない弾幕で、避ける必要があります。</li>
+        <li><span style="color: blue;">青い弾</span>: 一定時間内に破壊しないと爆発する弾幕です。</li>
+      </ul>
+
+      <!-- 難易度選択 -->
+      <div class="difficulty-selection">
+        <button class="difficulty-btn" data-level="1">レベル 1</button>
+        <button class="difficulty-btn" data-level="2">レベル 2</button>
+        <button class="difficulty-btn" data-level="3">レベル 3</button>
+        <button class="difficulty-btn" data-level="4">レベル 4</button>
+        <button class="difficulty-btn" data-level="5">レベル 5</button>
+      </div>
+      <!-- ゲームキャンバス -->
+      <canvas id="game-canvas" width="600" height="800"></canvas>
+    </div>
+  </section>
+
+  <!-- チャットボットセクション -->
+  <section id="chatbot" class="chatbot">
+    <div class="container">
+      <h2>チャットボット</h2>
+      <p>いずれLLMが無料で使えるようになったとき用</p>
+      <div class="chatbot-window">
+        <div id="chatbot-messages" class="chatbot-messages">
+          <!-- チャット内容がここに表示されます -->
+        </div>
+        <div class="chatbot-input">
+          <input type="text" id="chatbot-input" placeholder="メッセージを入力...">
+          <button id="chatbot-send-btn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AIデモ -->
+  <section id="ai" class="ai-demo">
+    <div class="container">
+      <h2>AIを体験しよう(嘘)</h2>
+      <p>以下にテキストを入力して、AIによる感情分析を試してみましょう。</p>
+      <textarea id="user-input" placeholder="ここにテキストを入力してください..."></textarea>
+      <button id="analyze-btn" class="btn">分析する</button>
+      <p id="ai-result">分析結果がここに表示されます。</p>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>お問い合わせ</h2>
+      <!-- SNSリンクの追加フォーム -->
+      <form id="sns-form">
+        <h3>SNSリンクを追加はいずれします。</h3>
+        <!-- <button type="url" id="github-url" placeholder="GitHubのURL"> -->
+        <!-- <button type="url" id="youtube-url" placeholder="YouTubeのURL"> -->
+        <!-- <button type="url" id="x-url" placeholder="https://x.com/mizugamiaqua"> -->
+        
+      </form>
+      <!-- SNSリンク表示 -->
+      <div id="sns-links" class="sns-links">
+        <!-- 追加されたSNSリンクがここに表示されます -->
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 仮の名前. All rights reserved.</p>
+      <!-- SNSアイコン -->
+      <div class="social-icons">
+        <!-- SNSアイコンがここに表示されます -->
+      </div>
+    </div>
+  </footer>
+
+  <!-- スクリプトの読み込み -->
+  <script src="script.js"></script>
+  <script src="ai.js"></script>
+  <script src="llm-chatbot.js"></script>
+  <script src="shooting-game.js"></script> <!-- シューティングゲームのスクリプト -->
+</body>
+</html>
